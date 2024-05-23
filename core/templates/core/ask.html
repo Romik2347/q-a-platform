@@ -1,0 +1,43 @@
+{% extends "core/layout.html" %} 
+
+
+{% block head %}
+<style>
+  .tox-promotion{
+    display:none;
+  }
+</style>
+{{form.media}}
+{% endblock head %}
+
+{% block body %}
+<div class="flex-1 max-w-3xl mx-auto p-6">
+  <header class="bg-white p-6 shadow-md mb-6 rounded-lg">
+    <h1 class="text-2xl font-bold">Ask a Question</h1>
+  </header>
+  <div class="bg-white p-6 rounded-lg shadow-md">
+    <form action="#" method="POST">
+      <div class="mb-4">
+
+
+        <label class="block text-gray-700 font-bold text-sm mb-2" for="title">
+          Title
+        </label>
+        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="title" name = "title" type="text" placeholder="Title">
+
+        {{form.as_p}}
+
+      </div>
+      <div class="mb-4">
+        <button
+          type="submit"
+          class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
+        >
+          Submit
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+{% endblock body %}

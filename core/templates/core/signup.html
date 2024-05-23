@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q&A Platform - Sign Up</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="flex flex-col h-screen bg-gray-100 text-gray-800">
+    <nav class="bg-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <a href="#" class="text-2xl font-bold text-gray-900">Q&A Platform</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="flex-1 max-w-3xl mx-auto flex flex-col justify-center">
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            <h1 class="text-2xl font-bold mb-4">Sign Up</h1>
+            <form action="#" method="POST">
+                <div class="mb-4">
+                    <label for="name" class="block text-gray-700 font-semibold">Full Name</label>
+                    <input type="text" id="name" name="name" class="mt-1 px-4 py-2 block w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0">
+                </div>
+                <div class="mb-4">
+                    <label for="email" class="block text-gray-700 font-semibold">Email Address</label>
+                    <input type="email" id="email" name="email" class="mt-1 px-4 py-2 block w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0">
+                </div>
+                <div class="mb-4">
+                    <label for="username" class="block text-gray-700 font-semibold">Username</label>
+                    <input type="text" id="username" name="username" class="mt-1 px-4 py-2 block w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0">
+                </div>
+                <div class="mb-4">
+                    <label for="password" class="block text-gray-700 font-semibold">Password</label>
+                    <input type="password" id="password" name="password" class="mt-1 px-4 py-2 block w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0">
+                </div>
+                <div class="mb-4">
+                    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Sign Up</button>
+                </div>
+            </form>
+            <p class="text-sm text-gray-600">Already have an account? <a href="#" class="text-blue-500 hover:underline">Login</a></p>
+        </div>
+    </div>
+    <footer class="bg-white text-center p-6 shadow-md">
+        &copy; 2024 Q&A Platform
+    </footer>
+</body>
+</html>

@@ -7,7 +7,7 @@ from tags.models import Tag
 def index(request):
     return render(request, "core/homepage.html")
 
-def questionForm_view(request):
+def ask_question_view(request):
     form = QuestionForm()
     tags = Tag.objects.all()
     context = {"form": form, "tags":tags}

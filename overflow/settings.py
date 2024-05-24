@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'accounts',
     'questions',
     'tinymce',
-    'tags'
+    'tags',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [

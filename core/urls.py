@@ -6,5 +6,5 @@ app_name = "core"
 
 urlpatterns = [
  path("", views.index, name = "index"),
- path("ask-question/", views.questionForm_view, name = "ask_question")
+ path("ask-question/", views.ask_question_view, name = "ask_question")
 ]

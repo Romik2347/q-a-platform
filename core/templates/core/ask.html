@@ -1,5 +1,5 @@
 {% extends "core/layout.html" %} 
-
+{% load static %}
 
 {% block head %}
 <style>
@@ -50,5 +50,5 @@
 {% endblock body %}
 
 {% block scripts %}
-
+<script src = "{% static "core/js/index.js" %}"></script>
 {% endblock scripts %}

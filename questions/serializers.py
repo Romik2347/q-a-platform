@@ -9,7 +9,7 @@ class QuestionSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Question
-        fields = ['title', 'content', 'tags','user']
+        fields = ['title', 'content', 'tags','user', 'id']
 
     def create(self, validated_data):
         tags_data = validated_data.pop('tags')

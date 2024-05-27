@@ -10,13 +10,16 @@
                 <p class="text-gray-600">{{question.timestamp}}</p>
             </div>
             <div class="bg-white p-6 rounded-lg shadow-md">
-                <h3 class="text-lg font-semibold mb-4">2 Answers</h3>
+                <h3 class="text-lg font-semibold mb-4">{{answers.count}} Answers</h3>
+                {% if answers.count == 0  %}
+                Looks like no answers yet...
+                {% else %}
+                {% for answer in answers %}
                 <div class="border-t border-gray-200 pt-4">
-                    <p class="text-gray-600"><strong>Jane Smith:</strong> You can center a div using flexbox by setting the parent container to <code class="bg-gray-200 px-1 rounded">display: flex</code> and then using <code class="bg-gray-200 px-1 rounded">justify-content: center</code> and <code class="bg-gray-200 px-1 rounded">align-items: center</code>.</p>
+                    <p class="text-gray-600"><strong>{{answer.user}}:</strong> {{answer.content|safe}}</p>
                 </div>
-                <div class="border-t border-gray-200 pt-4 mt-4">
-                    <p class="text-gray-600"><strong>Alex Johnson:</strong> Another method is to use <code class="bg-gray-200 px-1 rounded">margin: auto;</code> with a set width for the div. This will center the div horizontally.</p>
-                </div>
+                {% endfor %}
+                {% endif %}
             </div>
         </div>
     </div>

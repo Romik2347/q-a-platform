@@ -4,7 +4,7 @@ from tinymce.models import HTMLField
 class Question(models.Model):
     title = models.CharField(max_length=50)
     content = HTMLField()
-    timestamp = models.DateTimeField(auto_now_add=True)
+    timestamp = models.DateField(auto_now_add=True)
     user = models.ForeignKey("accounts.User", on_delete=models.CASCADE, related_name = "user_questions")
     tags = models.ManyToManyField("tags.Tag")
     
@@ -13,7 +13,7 @@ class Question(models.Model):
 
 class Answer(models.Model):
     user = models.ForeignKey("accounts.User", on_delete=models.CASCADE)
-    question = models.ForeignKey(Question, on_delete=models.CASCADE)
+    question = models.ForeignKey(Question, on_delete=models.CASCADE, related_name = "answers")
     content = HTMLField()
     timestamp = models.DateField(auto_now_add=True)
     approved = models.BooleanField(default = False)

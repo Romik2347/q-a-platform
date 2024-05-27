@@ -1,31 +1,19 @@
 {% extends "core/layout.html" %} {% block body %}
 <div class="flex-1 max-w-3xl mx-auto p-6">
   <header class="bg-white p-6 shadow-md mb-6 rounded-lg">
-    <h1 class="text-2xl font-bold">Recent Questions</h1>
+    <h1 class="text-2xl font-bold">All Questions</h1>
   </header>
   <div class="questions">
+    {% for question in questions %}
+    <a href="{% url "core:question_view" question.id%}">
     <div class="bg-white p-6 shadow-md">
-      <h2 class="text-xl font-semibold mb-2">How do I center a div in CSS?</h2>
-      <p class="text-gray-600">Asked by John Doe on May 15, 2024</p>
+      <h2 class="text-xl font-semibold mb-2">{{question.title}}</h2>
+      <p class="text-gray-600">Asked by {{question.user}} on {{question.timestamp}}</p>
     </div>
-    <div class="bg-white p-6 shadow-md">
-      <h2 class="text-xl font-semibold mb-2">
-        What is the best way to learn JavaScript in 2024?
-      </h2>
-      <p class="text-gray-600">Asked by Jane Smith on May 10, 2024</p>
-    </div>
-    <div class="bg-white p-6 shadow-md">
-      <h2 class="text-xl font-semibold mb-2">
-        How can I improve the performance of my React app?
-      </h2>
-      <p class="text-gray-600">Asked by Alex Johnson on May 5, 2024</p>
-    </div>
-    <div class="bg-white p-6 shadow-md">
-      <h2 class="text-xl font-semibold mb-2">
-        What are the new features in CSS3?
-      </h2>
-      <p class="text-gray-600">Asked by Chris Lee on May 1, 2024</p>
-    </div>
+  </a>
+    {% endfor %}
+    
+    
     <div class="flex">
       <!-- Previous Button -->
       <a

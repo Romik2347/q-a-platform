@@ -40,7 +40,7 @@
                     {% endfor %}
                 </ul>
             {% endif %}
-            <p class="text-sm text-gray-600">Don't have an account? <a href="#" class="text-blue-500 hover:underline">Sign up</a></p>
+            <p class="text-sm text-gray-600">Don't have an account? <a href="{% url "core:signup_view" %}" class="text-blue-500 hover:underline">Sign up</a></p>
         </div>
     </div>
     <footer class="bg-white text-center p-6 shadow-md">

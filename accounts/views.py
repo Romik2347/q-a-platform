@@ -2,10 +2,29 @@ from django.shortcuts import render
 from django.contrib.auth import login, authenticate, logout
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
+from django.db import IntegrityError
 from django.contrib import messages
+from .models import User
+
+#from .utils import parse_fullname
 
 def signup_view(request):
-    pass
+    if request.method == "POST":
+        email = request.POST["email"]
+        username = request.POST["username"]
+        password = request.POST["password"]
+        
+        try:
+            user = User.objects.create_user(username, email, password)
+            user.save()
+            return HttpResponseRedirect(reverse("core:login_view"))
+        except IntegrityError:
+            messages.add_message(request, messages.INFO, "Username already taken.")
+            return HttpResponseRedirect(reverse("core:signup_view"))
+
+    messages.add_message(request, messages.INFO, "No other than POST method is allowed.")
+    return HttpResponseRedirect(reverse("core:signup_view"))
+
 
 def login_view(request):
     if request.method == "POST":
@@ -26,7 +45,7 @@ def login_view(request):
 
         
     else:
-        messages.add_message(request, messages.INFO, "No other than POST request is allowed")
+        messages.add_message(request, messages.INFO, "No other than POST method is allowed.")
         return HttpResponseRedirect(reverse("core:login_view"))
 
 

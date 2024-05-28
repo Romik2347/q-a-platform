@@ -23,3 +23,6 @@ def question_view(request, ID):
 
 def profile_view(request, username):
     pass
+
+def login_view(request):
+    return render(request, "core/login.html")

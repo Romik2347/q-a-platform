@@ -2,6 +2,10 @@ from django.shortcuts import render
 from django.contrib.auth import login, authenticate, logout
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
+from django.contrib import messages
+
+def signup_view(request):
+    pass
 
 def login_view(request):
     if request.method == "POST":
@@ -9,30 +13,24 @@ def login_view(request):
         # Attempt to sign user in
         username = request.POST["username"]
         password = request.POST["password"]
+        
+        
         user = authenticate(request, username=username, password=password)
+        if user:
+            login(request, user)
+            return HttpResponseRedirect(reverse("core:index"))
 
-        # Check if authentication successful
-        if user is not None:
-            print("user exists")
-            if user.is_staff:
-                print("user is in staff")
-                login(request, user)
-                return HttpResponseRedirect(reverse("core:index"))
-            else:
-                print("invalid login")
-                login(request,user)
-                print("something")
-                return HttpResponse("you are an ordinary user") 
-                #IT SHOULD REDIRECT USER TO USERUI PAGE. WILL IMPLEMENT IT LATER
-        else:
-            print("sdfdf")
-            return render(request, "accounts/pages-login.html", {
-                "message": "Invalid username and/or password."
-            })
+        #return HttpResponseRedirect(reverse("core:login_view", kwargs={"message":"Invalid Credentials."}))
+        messages.add_message(request, messages.INFO, "Invalid Credentials.")
+        return HttpResponseRedirect(reverse("core:login_view"))
+
+        
     else:
-        return render(request, "accounts/pages-login.html")
+        messages.add_message(request, messages.INFO, "No other than POST request is allowed")
+        return HttpResponseRedirect(reverse("core:login_view"))
+
 
 
 def logout_view(request):
     logout(request)
-    return HttpResponseRedirect(reverse("accounts:login"))
+    return HttpResponseRedirect(reverse("core:login_view"))

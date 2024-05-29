@@ -1,10 +1,33 @@
+let buttonSubmit = document.querySelector("#submit-question");
+
 const postData = async () => {
     const url = '/questions/';  // Replace with your actual API endpoint
 
+    let title = document.querySelector("#question-title").value;
+    let content = document.querySelector("#tinymce");
+    let tags = document.querySelector("#tags");
+
+    let selectedTags = [];
+
+    for (const option of tags.options) {
+        if (option.selected) {
+            selectedTags.push(option.value); // Push the value of the selected option
+        }
+    }
+
+    const tinymceEditor = tinymce.activeEditor;
+
+    if (tinymceEditor) {
+        content = tinymceEditor.getContent();
+    } else {
+        console.error("Missing TinyMCE editor");
+        return; // Exit if both elements are missing
+    }
+
     const requestData = {
-        "title": "Sample Question",
-        "content": "<p>This is the content of the question</p>",
-        "tags": [1, 2]  // Assuming tags with ID 1 and 2 exist
+        "title": title,
+        "content": content,
+        "tags": selectedTags,
     };
 
     try {
@@ -19,18 +42,21 @@ const postData = async () => {
 
         if (response.ok) {
             const data = await response.json();
-            window.location.href = `/question/${data["id"]}`
+            window.location.href = `/question/${data["id"]}`;
             console.log('Success:', data);
         } else {
             const errorData = await response.json();
+            alert(errorData);
             console.error('Error:', errorData);
         }
     } catch (error) {
+        alert(error);
         console.error('Fetch error:', error);
+    } finally {
+        buttonSubmit.disabled = false; // Re-enable the button
+        console.log(`BUTTON STATUS: ${buttonSubmit.disabled}`);
     }
 };
-
-//postData();
 
 function getCookie(name) {
     let cookieValue = null;
@@ -47,4 +73,11 @@ function getCookie(name) {
     }
     return cookieValue;
 }
-const csrftoken = getCookie('csrftoken');
+
+buttonSubmit.addEventListener("click", async (e) => {
+    e.preventDefault(); // Prevent default form submission behavior
+    buttonSubmit.disabled = true; // Disable the button
+    console.log(`BUTTON STATUS: ${buttonSubmit.disabled}`);
+    console.log("clicked");
+    await postData(); // Wait for postData to complete
+});

@@ -149,7 +149,7 @@ TINYMCE_DEFAULT_CONFIG = {
     'selector': 'textarea',
     'theme': 'silver',
     'plugins': '''
-            textcolor save link image media preview codesample contextmenu
+             save link image media preview codesample 
             table code lists fullscreen nonbreaking
              directionality searchreplace  visualblocks
             visualchars  autolink   charmap print  hr

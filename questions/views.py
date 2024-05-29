@@ -2,7 +2,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import authentication, permissions
 from .serializers import QuestionSerializer
-
+import time
 class QuestionView(APIView):
     """
     question
@@ -16,6 +16,7 @@ class QuestionView(APIView):
             serializer.save()
             print(serializer.data)
             return Response(serializer.data)
+        print(serializer.error_messages)
         return Response(serializer.errors)
 
     def put(self,request, ID):

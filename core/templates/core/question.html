@@ -8,6 +8,13 @@
                 <h2 class="text-xl font-semibold mb-2">{{question.title}}</h2>
                 {{question.content|safe}}
                 <p class="text-gray-600">{{question.timestamp}}</p>
+                <br>
+                Tags:
+                <p class="text-sm text-slate-500 truncate">
+                    {% for tag in question.tags.all %}
+                    {{tag}} 
+                    {% endfor %}
+                </p>
             </div>
             <div class="bg-white p-6 rounded-lg shadow-md">
                 <h3 class="text-lg font-semibold mb-4">{{answers.count}} Answers</h3>
@@ -21,7 +28,11 @@
                 {% endfor %}
                 {% endif %}
             </div>
+          
         </div>
+     
     </div>
+    
+   
 </div>
 {% endblock body %}

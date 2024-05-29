@@ -1,28 +1,38 @@
 from django.shortcuts import render
 
+from django.contrib.auth.decorators import login_required
+
 from .forms import QuestionForm
+
 from tags.models import Tag
 from questions.models import Question
+from accounts.models import User
 
+@login_required
 def index(request):
     questions = Question.objects.all().only("id", "title","timestamp")
     context = {"questions":questions}
     return render(request, "core/index.html", context)
 
+@login_required
 def ask_question_view(request):
     form = QuestionForm()
     tags = Tag.objects.all()
     context = {"form": form, "tags":tags}
     return render(request, "core/ask.html", context)
 
+@login_required
 def question_view(request, ID):
     question = Question.objects.get(id = ID)
     answers = question.answers.all()
     context = {"question":question, "answers":answers}
     return render(request,"core/question.html", context)
 
+@login_required
 def profile_view(request, username):
-    pass
+    user = User.objects.get(username = username)
+    context = {"user":user}
+    return render(request, "core/profile.html", context)
 
 def login_view(request):
     return render(request, "core/login.html")

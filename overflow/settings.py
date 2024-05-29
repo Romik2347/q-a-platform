@@ -140,6 +140,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #AUTHENTCICATION: 
 AUTH_USER_MODEL = "accounts.User"
+LOGIN_URL = "/login/"
 
 
 TINYMCE_DEFAULT_CONFIG = {

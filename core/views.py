@@ -18,7 +18,7 @@ def index(request):
     page_number = request.GET.get("page")
     page_obj = paginator.get_page(page_number)
 
-    context = {"questions":questions}
+    context = {"page_obj":page_obj}
     return render(request, "core/index.html", context)
 
 @login_required

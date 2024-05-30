@@ -2,6 +2,8 @@ from django.shortcuts import render
 
 from django.contrib.auth.decorators import login_required
 
+from django.core.paginator import Paginator
+
 from .forms import QuestionForm
 
 from tags.models import Tag
@@ -11,6 +13,11 @@ from accounts.models import User
 @login_required
 def index(request):
     questions = Question.objects.all().only("id", "title","timestamp")
+    paginator = Paginator(questions, 5)
+
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
+
     context = {"questions":questions}
     return render(request, "core/index.html", context)
 

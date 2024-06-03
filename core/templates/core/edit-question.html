@@ -44,6 +44,7 @@
           </div>
           <div class="mb-4">
             <button
+              id = "submit-question"
               type="submit"
               class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
             >
@@ -59,6 +60,8 @@
     {% block scripts %}
     
     {{question.content|json_script:"json-initialText"}}
+    {{question.id|json_script:"json-questionID"}}
+
     <script>
       let initialText = JSON.parse(document.getElementById("json-initialText").textContent)
       tinymce.init({
@@ -114,6 +117,7 @@
         }
     });
     </script>
+    <script src = {% static "core/js/edit-question.js" %}></script>
     {% endblock scripts %}
 
 

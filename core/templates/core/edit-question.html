@@ -13,46 +13,42 @@
 {% endblock head %}
 
 
-
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Q&A Platform - Ask a Question</title>
-    <link
-      href="{% static "core/styles/tailwind.min.css" %}"
-      rel="stylesheet"
-    />
-  </head>
-  <body class="bg-gray-100 text-gray-800">
-    <div class="max-w-3xl mx-auto p-6">
       {% block body %}
+    <div class="max-w-3xl mx-auto p-6">
       <header class="bg-white p-6 shadow-md mb-6 rounded-lg">
-        <h1 class="text-2xl font-bold">Ask a Question</h1>
+        <h1 class="text-2xl font-bold">Edit a Question</h1>
       </header>
       <div class="bg-white p-6 rounded-lg shadow-md">
-        <form action="#" method="POST">
+        <form action="#">
           <div class="mb-4">
-            <label for="question" class="block text-gray-700 font-semibold"
-              >Your Question</label
-            >
-            
+            <label class="block text-gray-700 font-bold text-sm mb-2" for="title">
+              Title
+            </label>
+            <input value = "{{question.title}}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="question-title" name = "title" type="text" placeholder="Title">
+          </div>
               <div class="mb-4">
                 {{form.as_p}}
               </div>
-          </div>
-          <div class="mb-4">
-            <button
-              id = "submit-question"
-              type="submit"
-              class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
-            >
-              Submit
-            </button>
-          </div>
+              
+              <div class="mb-4">
+              <label for="tags" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select an options</label>
+              <select multiple id="tags" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+              {% for tag in tags %}
+                <option value="{{tag.id}}" {% if tag in question.tags.all %}selected {% else %}{% endif %}>{{tag.title}}</option>
+              {% endfor %}
+              </select>
+              </div>
         </form>
+        <div class="mb-4">
+          <button
+            id = "submit-question"
+            type="submit"
+            class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">
+            Submit
+          </button>
+        </div>
       </div>
+    </div>
       {% endblock body %}
       
     

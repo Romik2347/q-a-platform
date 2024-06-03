@@ -1,0 +1,119 @@
+{% extends "core/layout.html" %}
+{% load static %}
+
+{% block head %}
+
+<style>
+  .tox-promotion{
+    display:none;
+  }
+</style>
+{{form.media}}
+
+{% endblock head %}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Q&A Platform - Ask a Question</title>
+    <link
+      href="{% static "core/styles/tailwind.min.css" %}"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-gray-100 text-gray-800">
+    <div class="max-w-3xl mx-auto p-6">
+      {% block body %}
+      <header class="bg-white p-6 shadow-md mb-6 rounded-lg">
+        <h1 class="text-2xl font-bold">Ask a Question</h1>
+      </header>
+      <div class="bg-white p-6 rounded-lg shadow-md">
+        <form action="#" method="POST">
+          <div class="mb-4">
+            <label for="question" class="block text-gray-700 font-semibold"
+              >Your Question</label
+            >
+            
+              <div class="mb-4">
+                {{form.as_p}}
+              </div>
+          </div>
+          <div class="mb-4">
+            <button
+              type="submit"
+              class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
+            >
+              Submit
+            </button>
+          </div>
+        </form>
+      </div>
+      {% endblock body %}
+      
+    
+    
+    {% block scripts %}
+    
+    {{question.content|json_script:"json-initialText"}}
+    <script>
+      let initialText = JSON.parse(document.getElementById("json-initialText").textContent)
+      tinymce.init({
+        selector: 'textarea',  // Replace this with your actual selector
+        theme: 'silver',
+            plugins: `
+                save link image media preview codesample 
+                table code lists fullscreen nonbreaking
+                directionality searchreplace visualblocks
+                visualchars autolink charmap print hr
+                anchor pagebreak
+            `,
+            toolbar1: `
+            fullscreen preview bold italic underline | fontselect,
+            fontsizeselect  | forecolor backcolor | alignleft alignright |
+            aligncenter alignjustify | indent outdent | bullist numlist table |
+            | link image media | codesample |
+            `,
+    toolbar2: `
+            visualblocks visualchars |
+            charmap hr pagebreak nonbreaking anchor |  code |
+            `,
+            file_picker_callback:
+            function (cb, value, meta) {
+              var input = document.createElement("input");
+              input.setAttribute("type", "file");
+              if (meta.filetype == "image") {
+                  input.setAttribute("accept", "image/*");
+              }
+              if (meta.filetype == "media") {
+                  input.setAttribute("accept", "video/*");
+              }
+      
+              input.onchange = function () {
+                  var file = this.files[0];
+                  var reader = new FileReader();
+                  reader.onload = function () {
+                      var id = "blobid" + (new Date()).getTime();
+                      var blobCache = tinymce.activeEditor.editorUpload.blobCache;
+                      var base64 = reader.result.split(",")[1];
+                      var blobInfo = blobCache.create(id, file, base64);
+                      blobCache.add(blobInfo);
+                      cb(blobInfo.blobUri(), { title: file.name });
+                  };
+                  reader.readAsDataURL(file);
+              };
+              input.click();
+          },
+        setup: function(editor) {
+            editor.on('init', function() {
+                editor.setContent(initialText);
+            });
+        }
+    });
+    </script>
+    {% endblock scripts %}
+
+

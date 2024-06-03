@@ -1,3 +1,4 @@
+{% extends "core/layout.html" %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -5,12 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Q&A Platform - Ask a Question</title>
     <link
-      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      href="{% static "core/styles/tailwind.min.css" %}"
       rel="stylesheet"
     />
   </head>
   <body class="bg-gray-100 text-gray-800">
     <div class="max-w-3xl mx-auto p-6">
+      {% block body %}
       <header class="bg-white p-6 shadow-md mb-6 rounded-lg">
         <h1 class="text-2xl font-bold">Ask a Question</h1>
       </header>
@@ -37,9 +39,6 @@
           </div>
         </form>
       </div>
-      <footer class="text-center p-6 mt-6 bg-white rounded-lg shadow-md">
-        &copy; 2024 Q&A Platform
-      </footer>
-    </div>
-  </body>
-</html>
+      {% endblock body %}
+      
+    

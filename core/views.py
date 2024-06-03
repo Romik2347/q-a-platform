@@ -36,6 +36,13 @@ def question_view(request, ID):
     return render(request,"core/question.html", context)
 
 @login_required
+def question_edit(request, ID):
+    question = Question.objects.get(id = ID)
+    form = QuestionForm()
+    context = {"question":question,"form":form}
+    return render(request, "core/edit-question.html", context)
+
+@login_required
 def profile_view(request, username):
     user = User.objects.get(username = username)
     context = {"user":user}

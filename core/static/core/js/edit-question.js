@@ -34,7 +34,7 @@ const postData = async () => {
 
     try {
         const response = await fetch(url, {
-            method: 'POST',
+            method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
                 'X-CSRFToken': getCookie("csrftoken"),  // Replace with your actual auth token if needed

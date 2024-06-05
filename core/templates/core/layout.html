@@ -20,16 +20,22 @@
             <a href="{% url "core:index" %}" class="text-2xl font-bold text-gray-900"
               >Q&A Platform</a
             >
+            
             <div class="ml-10 flex items-baseline space-x-4">
               <a
                 href="{% url "core:index" %}"
                 class="text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
                 >Home</a
               >
+              <button id="tagSelectorButton" data-dropdown-toggle="tagSelector" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">Tags <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                </svg>
+                </button>
               <a href="{% url "core:ask_question_view" %}" class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-green-600 dark:hover:bg-green-700 focus:outline-none dark:focus:ring-green-800">Ask a question</a>
 
                 <button id="profileDropdownButton" data-dropdown-toggle="profileDropdown" data-dropdown-delay="500" data-dropdown-trigger="hover" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">{{request.user}} <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                 </button>
+                
             </div>
           </div>
         </div>
@@ -53,6 +59,25 @@
    
   </ul>
 </div>
+
+
+
+  
+  <!-- Dropdown menu -->
+  <div id="tagSelector" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+      <div class="px-4 py-3 text-sm text-gray-900 dark:text-white">
+        <div>Tags</div>
+        <div class="font-medium truncate">Select the <br>desired tag</div>
+      </div>
+      <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="tagSelectorButton">
+        {% for tag in tags %}
+        <li>
+          <a href="{% url "core:tags_view" tag.title%}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">{{tag.title}}</a>
+        </li>
+        {% endfor %}
+      </ul>
+  </div>
+  
 <script type="text/javascript" src="{% static "core/js/tinymce/tinymce.min.js" %}"></script>
 <script src = "{% static "core/js/flowbite.min.js" %}"></script>
 {% block scripts %}{% endblock scripts %}

@@ -25,8 +25,9 @@ class QuestionView(APIView):
             question = Question.objects.get(id = ID)
         except Question.DoesNotExist:
             return Response({"error":"Question doesn't exist."}, status=status.HTTP_404_NOT_FOUND)
-        
-        serializer = QuestionSerializer(question,data=request.data)
+
+        serializer = QuestionSerializer(question,data=request.data, context={"request":request})
+
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_200_OK)

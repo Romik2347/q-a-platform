@@ -17,6 +17,12 @@
                     {{tag}} 
                     {% endfor %}
                 </p>
+                <br>
+                {% if request.user == question.user %}
+                <a href="#" class="font-medium text-gray text-gray-600 dark:text-gray-500 hover:underline">Edit</a>
+
+                {% endif %}
+
             </div>
             <div class="bg-white p-6 rounded-lg shadow-md">
                 <h3 class="text-lg font-semibold mb-4">{{answers.count}} Answers</h3>

@@ -18,7 +18,7 @@ def index(request):
     page_number = request.GET.get("page")
     page_obj = paginator.get_page(page_number)
 
-    context = {"page_obj":page_obj}
+    context = {"page_obj":page_obj, "tags":Tag.objects.all()}
     return render(request, "core/index.html", context)
 
 @login_required
@@ -47,6 +47,19 @@ def profile_view(request, username):
     user = User.objects.get(username = username)
     context = {"user":user}
     return render(request, "core/profile.html", context)
+
+@login_required
+def tags_view(request, tag):
+    tag = Tag.objects.get(title = tag)
+    questions = Question.objects.filter(tags = tag)
+
+    paginator = Paginator(questions, 5)
+
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
+
+    context = {"page_obj":page_obj, "tags":Tag.objects.all()}
+    return render(request,"core/index.html", context)
 
 def login_view(request):
     return render(request, "core/login.html")

@@ -19,7 +19,7 @@
                 </p>
                 <br>
                 {% if request.user == question.user %}
-                <a href="#" class="font-medium text-gray text-gray-600 dark:text-gray-500 hover:underline">Edit</a>
+                <a href="{% url "core:edit_question_view" question.id %}" class="font-medium text-gray text-gray-600 dark:text-gray-500 hover:underline">Edit</a>
 
                 {% endif %}
 

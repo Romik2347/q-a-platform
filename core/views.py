@@ -4,10 +4,13 @@ from django.contrib.auth.decorators import login_required
 
 from django.core.paginator import Paginator
 
+from django.http import HttpResponseRedirect
+from django.urls import reverse
+
 from .forms import QuestionForm
 
 from tags.models import Tag
-from questions.models import Question
+from questions.models import Question, Answer
 from accounts.models import User
 
 @login_required
@@ -31,8 +34,16 @@ def ask_question_view(request):
 @login_required
 def question_view(request, ID):
     question = Question.objects.get(id = ID)
+    form = QuestionForm()
+
+    if request.method == "POST":
+        form = QuestionForm(request.POST)
+        print(form.data)
+        answer = Answer.objects.create(user = request.user, question = question, approved=True, content = form.data["content"])
+        return HttpResponseRedirect(reverse("core:question_view", kwargs={"ID":ID}))
+
     answers = question.answers.all()
-    context = {"question":question, "answers":answers}
+    context = {"question":question, "answers":answers, "form":form}
     return render(request,"core/question.html", context)
 
 @login_required

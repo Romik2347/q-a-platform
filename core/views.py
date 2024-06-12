@@ -94,4 +94,8 @@ def staff_questions_view(request, tag):
     where they (the staff) 
     will see a list of questions related to their tag.
     """
-    return render(request, "core/staff-questions.html")
+    tag = Tag.objects.get(title = tag)
+    questions = Question.objects.filter(answered=False).filter(tags = tag)
+    tags = Tag.objects.all()
+    context = {"questions":questions, "tags":tags}
+    return render(request, "core/staff-questions.html", context)

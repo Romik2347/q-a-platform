@@ -13,5 +13,6 @@ urlpatterns = [
  path("profile/<str:username>", views.profile_view, name ="profile_view"),
  path("login/", views.login_view, name = "login_view"),
  path("signup/", views.signup_view, name = "signup_view"),
- path("questions-staff/", views.staff_index_page, name = "staff_questions")
+ path("questions-staff/", views.staff_index_page, name = "staff_questions"),
+ path("questions-staff/<str:tag>", views.staff_questions_view, name = "staff_questions_tag")
 ]

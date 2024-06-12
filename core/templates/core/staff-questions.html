@@ -12,7 +12,7 @@
 <body>
     <div class="container mt-3">
         <select class="form-select" aria-label="Default select example">
-            <option selected>Open this select menu</option>
+            <option selected disabled>Select tag</option>
             {%for tag in tags%}
             {%if question.tag == tag%}
             <option value="{{tag.title}}">{{tag.title}}</option>
@@ -50,6 +50,7 @@
         let opt = document.querySelector(".form-select");
         opt.addEventListener("change", (e) => {
             console.log(opt.value)
+            window.location.replace(`/questions-staff/${opt.value}`)
         })
     </script>
 </body>

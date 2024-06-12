@@ -1,0 +1,9 @@
+body {
+    background-color: #a7c760;
+    font-family: 'Montserrat', sans-serif;
+
+}
+
+html{
+    scroll-behavior: smooth;
+}

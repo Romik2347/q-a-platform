@@ -7,6 +7,7 @@ class Question(models.Model):
     timestamp = models.DateField(auto_now_add=True)
     user = models.ForeignKey("accounts.User", on_delete=models.CASCADE, related_name = "user_questions")
     tags = models.ManyToManyField("tags.Tag")
+    answered = models.BooleanField(default=False)
     
     def __str__(self):
         return self.title

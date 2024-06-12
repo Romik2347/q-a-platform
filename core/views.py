@@ -1,6 +1,8 @@
 from django.shortcuts import render
 
 from django.contrib.auth.decorators import login_required
+from django.contrib.admin.views.decorators import staff_member_required
+
 
 from django.core.paginator import Paginator
 
@@ -77,3 +79,19 @@ def login_view(request):
 
 def signup_view(request):
     return render(request, "core/signup.html")
+
+@staff_member_required
+def staff_index_page(request):
+    questions = Question.objects.filter(answered=False)
+    tags = Tag.objects.all()
+    context = {"questions":questions, "tags":tags}
+    return render(request, "core/staff-questions.html", context)
+
+@staff_member_required
+def staff_questions_view(request, tag):
+    """
+    This page is only for staff, 
+    where they (the staff) 
+    will see a list of questions related to their tag.
+    """
+    return render(request, "core/staff-questions.html")

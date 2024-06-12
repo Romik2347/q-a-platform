@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questions with Selector</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container mt-3">
+        <select class="form-select" aria-label="Default select example">
+            <option selected>Open this select menu</option>
+            {%for tag in tags%}
+            {%if question.tag == tag%}
+            <option value="{{tag.title}}">{{tag.title}}</option>
+            {%else%}
+            <option value="{{tag.title}}">{{tag.title}}</option>
+
+            {%endif%}
+
+            {%endfor%}
+
+        </select>
+    </div>
+
+    <div class="container mt-5">
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+            {%for question in questions %}
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{question.title}}</h5>
+                        <p class="card-text">{{question.timestamp}}</p>
+                    </div>
+                </div>
+            </div>
+            {%endfor%}
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+
+    <script>
+        let opt = document.querySelector(".form-select");
+        opt.addEventListener("change", (e) => {
+            console.log(opt.value)
+        })
+    </script>
+</body>
+
+</html>

@@ -17,7 +17,7 @@ from accounts.models import User
 
 @login_required
 def index(request):
-    questions = Question.objects.all().only("id", "title","timestamp")
+    questions = Question.objects.all().only("id", "title","timestamp").order_by("timestamp").reverse()
     paginator = Paginator(questions, 5)
 
     page_number = request.GET.get("page")
@@ -35,7 +35,7 @@ def ask_question_view(request):
 
 @login_required
 def question_view(request, ID):
-    question = Question.objects.get(id = ID)
+    question = Question.objects.get(id = ID).order_by("timestamp")
     form = QuestionForm()
 
     if request.method == "POST":
@@ -50,7 +50,7 @@ def question_view(request, ID):
 
 @login_required
 def question_edit(request, ID):
-    question = Question.objects.get(id = ID)
+    question = Question.objects.get(id = ID).order_by("timestamp")
     form = QuestionForm()
     context = {"question":question,"form":form, "tags":Tag.objects.all()}
     return render(request, "core/edit-question.html", context)
@@ -64,7 +64,7 @@ def profile_view(request, username):
 @login_required
 def tags_view(request, tag):
     tag = Tag.objects.get(title = tag)
-    questions = Question.objects.filter(tags = tag)
+    questions = Question.objects.filter(tags = tag).order_by("timestamp")
 
     paginator = Paginator(questions, 5)
 
@@ -82,7 +82,7 @@ def signup_view(request):
 
 @staff_member_required
 def staff_index_page(request):
-    questions = Question.objects.filter(answered=False)
+    questions = Question.objects.filter(answered=False).order_by("timestamp")
     tags = Tag.objects.all()
     context = {"questions":questions, "tags":tags}
     return render(request, "core/staff-questions.html", context)
@@ -95,7 +95,7 @@ def staff_questions_view(request, tag):
     will see a list of questions related to their tag.
     """
     tag = Tag.objects.get(title = tag)
-    questions = Question.objects.filter(answered=False).filter(tags = tag)
+    questions = Question.objects.filter(answered=False).filter(tags = tag).order_by("timestamp")
     tags = Tag.objects.all()
     context = {"questions":questions, "tags":tags}
     return render(request, "core/staff-questions.html", context)

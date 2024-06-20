@@ -35,7 +35,7 @@ def ask_question_view(request):
 
 @login_required
 def question_view(request, ID):
-    question = Question.objects.get(id = ID).order_by("timestamp")
+    question = Question.objects.get(id = ID)
     form = QuestionForm()
 
     if request.method == "POST":
@@ -50,7 +50,7 @@ def question_view(request, ID):
 
 @login_required
 def question_edit(request, ID):
-    question = Question.objects.get(id = ID).order_by("timestamp")
+    question = Question.objects.get(id = ID)
     form = QuestionForm()
     context = {"question":question,"form":form, "tags":Tag.objects.all()}
     return render(request, "core/edit-question.html", context)
@@ -58,7 +58,8 @@ def question_edit(request, ID):
 @login_required
 def profile_view(request, username):
     user = User.objects.get(username = username)
-    context = {"user":user}
+    questions = Question.objects.filter(user = user)
+    context = {"user":user, "questions":questions}
     return render(request, "core/profile.html", context)
 
 @login_required

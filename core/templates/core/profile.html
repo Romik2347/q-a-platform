@@ -13,10 +13,13 @@
     <div class="bg-white p-6 mb-6 shadow-md">
         <h2 class="text-xl font-semibold mb-2">Your Questions</h2>
         <ul>
+            {% for question in questions%}
             <li>
-                <a href="#" class="text-blue-600 hover:underline">How do I center a div in CSS?</a>
-                <span class="text-gray-600">Asked on May 15, 2024</span>
+                <a href="{% url 'core:question_view' question.id %}" class="text-blue-600 hover:underline">{{question.title}}</a>
+                <span class="text-gray-600">Asked on {{question.timestamp}}</span>
             </li>
+            {%endfor%}
+
             <li>
                 <a href="#" class="text-blue-600 hover:underline">What is the best way to learn JavaScript in 2024?</a>
                 <span class="text-gray-600">Asked on May 10, 2024</span>

@@ -50,7 +50,7 @@ def question_view(request, ID):
 
 @login_required
 def question_edit(request, ID):
-    question = Question.objects.get(id = ID)
+    question = Question.objects.get(id = ID) 
     form = QuestionForm()
     context = {"question":question,"form":form, "tags":Tag.objects.all()}
     return render(request, "core/edit-question.html", context)

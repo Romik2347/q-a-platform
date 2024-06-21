@@ -34,6 +34,7 @@
                     <div class="card-body">
                         <h5 class="card-title">{{question.title}}</h5>
                         <p class="card-text">{{question.timestamp}}</p>
+                        <a href="{% url 'core:question_view' question.id %}" class="stretched-link"></a>
                     </div>
                 </div>
             </div>

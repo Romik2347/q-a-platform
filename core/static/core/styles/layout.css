@@ -1,0 +1,242 @@
+body{
+    font-family: 'Montserrat', sans-serif;
+    background-color: #a7c620;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html{
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+
+
+/* navigation bar */
+nav {
+    position: relative;
+    background: linear-gradient(10deg, white, #a7c620, #000);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+    top: 0px;
+    width: 100%;
+    height: 75px;
+}
+
+
+div .flex{
+    position: absolute;
+    text-align: left;
+    width: 100%;
+    top: 0px;
+    left: 10px;  
+      
+}
+#Platform {
+    position: absolute;
+    color: #000;
+    font-size: 30px;
+    top: 20px;
+    left: 10px;
+    text-decoration: none;
+}
+
+#Platform2 {
+    position: absolute;
+    width: 100%;
+    text-align: end;
+    display: block;
+}
+
+#Home{
+    position: absolute;
+    font-size: 25px;
+    text-decoration: none;
+    top: 25px;
+    color: #000;
+    left: 250px;
+    padding: 0%;
+}
+
+
+/* buttons on it */
+.text-white {
+    color: #000;
+}
+
+.bg-blue-700 {
+    background-color: #000; /* Adjust the shade as per your design */
+}
+
+.hover\:bg-blue-800:hover {
+    background-color: #fff; /* Adjust the shade as per your design */
+}
+
+.focus\:ring-4:focus {
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.3);
+    /* Adjust the color as per your design */
+}
+
+.focus\:outline-none:focus {
+    outline: none;
+}
+
+.focus\:ring-blue-300:focus {
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.3); /* Adjust the color as per your design */
+}
+
+.font-medium {
+    font-weight: 500;
+}
+
+.rounded-lg {
+    border-radius: 0.5rem;
+}
+
+.text-sm {
+    font-size: 0.875rem;
+}
+
+.px-5 {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+}
+
+.py-2\.5 {
+    padding-top: 0.625rem;
+    padding-bottom: 0.625rem;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.inline-flex {
+    display: inline-flex;
+}
+
+.items-center {
+    align-items: center;
+}
+
+.dark\:bg-blue-600 {
+    background: linear-gradient(45deg,#fff, #a7c620, #000); /* Adjust the shade as per your design */
+}
+
+.dark\:hover\:bg-blue-700:hover {
+    background-color: #a7c620; /* Adjust the shade as per your design */
+}
+
+.dark\:focus\:ring-blue-800:focus {
+    box-shadow: 0 0 0 2px #a7c620(30, 64, 175, 0.5); /* Adjust the color as per your design */
+}
+
+/* Gray Text */
+.text-gray-900 {
+    color: #1f2937; /* Adjust the shade as per your design */
+}
+
+/* Green Button */
+.bg-green-700 {
+    background: linear-gradient(45deg,#fff, #a7c620, #000);
+    border: 2px solid #000;
+     /* Adjust the shade as per your design */
+}
+
+.hover\:bg-green-800:hover {
+    background-color: #fff; /* Adjust the shade as per your design */
+}
+
+.focus\:ring-green-300:focus {
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.3); /* Adjust the color as per your design */
+}
+
+.dark\:bg-green-600 {
+    background-color: #a7c620; /* Adjust the shade as per your design */
+}
+
+.dark\:hover\:bg-green-700:hover {
+    background-color: #000; /* Adjust the shade as per your design */
+}
+
+.dark\:focus\:ring-green-800:focus {
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.3); /* Adjust the color as per your design */
+}
+
+/* SVG Styles */
+.svg-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-left: 0.75rem;
+}
+
+.svg-icon path {
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 2;
+}
+
+/* Dropdown Toggle */
+[data-dropdown-toggle] {
+    cursor: pointer;
+}
+
+/* Dropdown Menu */
+[data-dropdown] {
+    display: none;
+    position: absolute;
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    margin-top: 0.5rem;
+    z-index: 10;
+}
+
+[data-dropdown] a {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: #1f2937; /* Adjust the shade as per your design */
+    text-decoration: none;
+}
+
+[data-dropdown] a:hover {
+    background-color: #f9fafb; /* Adjust the shade as per your design */
+}
+
+/* Utility Classes */
+.hidden {
+    display: none;
+}
+
+#tagSelectorButton{
+    position: absolute;
+    left: 400px;
+    top:20px;
+    color: #000;
+    font-weight: bold;
+    padding-left: 10px;
+
+}
+#forstaff{
+    position: absolute;
+    left: 500px;
+    top: 21px;
+    text-align: center;
+    color: #000;
+    font-weight: bold;
+    padding-left: 10px;
+}
+
+#profileDropdownButton{
+    position: absolute;
+    left: 650px;
+    top:20px;
+    color: #000;
+    font-weight: bold;
+    padding-left: 10px;
+}

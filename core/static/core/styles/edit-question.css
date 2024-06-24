@@ -1,0 +1,192 @@
+
+body {
+    background-color: #a7c620; /* Light gray background */
+    font-family: 'Montserrat', sans-serif; /* Font */
+    color: #000; /* Text color */
+}
+
+.max-w-3xl {
+    max-width: 48rem; /* Width of the container */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.p-6 {
+    padding: 1.5rem; /* Padding */
+}
+
+.bg-white {
+    background-color: #ffffff; /* White background */
+}
+
+.shadow-md {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Shadow */
+}
+
+.mb-6 {
+    margin-bottom: 1.5rem; /* Margin bottom */
+}
+
+.rounded-lg {
+    border-radius: 0.5rem; /* Rounded corners */
+}
+
+.text-2xl {
+    font-size: 1.5rem; /* Font size */
+}
+
+.font-bold {
+    font-weight: 700; /* Bold font */
+}
+
+.block {
+    display: block; /* Block display */
+}
+
+.text-gray-700 {
+    color: #4a5568; /* Gray text color */
+}
+
+.text-sm {
+    font-size: 0.875rem; /* Small font size */
+}
+
+.mb-2 {
+    margin-bottom: 0.5rem; /* Margin bottom */
+}
+
+.shadow {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Shadow */
+}
+
+.appearance-none {
+    appearance: none; /* Remove default appearance */
+}
+
+.border {
+    border-width: 1px; /* Border width */
+}
+
+.rounded {
+    border-radius: 0.25rem; /* Rounded corners */
+}
+
+.w-full {
+    width: 100%; /* Full width */
+}
+
+.py-2 {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem; /* Padding y-axis */
+}
+
+.px-3 {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem; /* Padding x-axis */
+}
+
+.leading-tight {
+    line-height: 1.25; /* Line height */
+}
+
+.focus\:outline-none {
+    outline: none; /* Remove focus outline */
+}
+
+.focus\:shadow-outline {
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5); /* Focus shadow */
+}
+
+.mb-4 {
+    margin-bottom: 1rem; /* Margin bottom */
+}
+
+.text-gray-900 {
+    color: #1a202c; /* Dark gray text color */
+}
+
+.font-medium {
+    font-weight: 500; /* Medium font weight */
+}
+
+.bg-gray-50 {
+    background-color: #f9fafb; /* Light gray background */
+}
+
+.border-gray-300 {
+    border-color: #d2d6dc; /* Light gray border */
+}
+
+.focus\:ring-blue-500 {
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5); /* Focus ring */
+}
+
+.focus\:border-blue-500 {
+    border-color: #3182ce; /* Blue border */
+}
+
+.dark\:bg-gray-700 {
+    background-color: #4a5568; /* Dark background */
+}
+
+.dark\:border-gray-600 {
+    border-color: #718096; /* Dark border */
+}
+
+.dark\:placeholder-gray-400 {
+    color: #a0aec0; /* Placeholder color */
+}
+
+.dark\:text-white {
+    color: #ffffff; /* White text color */
+}
+
+.dark\:focus\:ring-blue-500 {
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5); /* Dark focus ring */
+}
+
+.dark\:focus\:border-blue-500 {
+    border-color: #3182ce; /* Dark blue border */
+}
+
+.bg-blue-500 {
+    background-color: #4299e1; /* Blue background */
+}
+
+.hover\:bg-blue-600:hover {
+    background-color: #2b6cb0; /* Darker blue on hover */
+}
+
+.text-white {
+    color: #ffffff; /* White text color */
+}
+
+.px-4 {
+    padding-left: 1rem;
+    padding-right: 1rem; /* Padding x-axis */
+}
+
+.py-2 {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem; /* Padding y-axis */
+}
+
+.rounded-md {
+    border-radius: 0.375rem; /* Medium rounded corners */
+}
+
+#submit-question {
+    background-color: #a7c620; /* Button background color */
+    color: #000; /* Button text color */
+    display: block; /* Display as block */
+    margin: 0 auto; /* Center the button */
+    padding: 10px 20px; /* Button padding */
+    border-radius: 0.375rem; /* Rounded corners */
+    font-size: 1rem; /* Font size */
+    font-weight: 500; /* Font weight */
+    transition: background-color 0.3s; /* Transition for background color */
+}
+
+#submit-question:hover {
+    background-color: #94ad1d; /* Darker background on hover */
+}
